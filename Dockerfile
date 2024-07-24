@@ -19,5 +19,8 @@ RUN pip3 install mmsegmentation-1.2.2rc1-py3-none-any.whl
 RUN pip3 install ftfy
 RUN pip3 install regex
 
+RUN groupadd -r user && useradd -m --no-log-init -r -g user user
+USER user
+
 LABEL maintainer="vibe <vibe.research@outlook.com>"
 ENTRYPOINT ["python3", "inference.py"]
