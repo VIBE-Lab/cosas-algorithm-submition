@@ -1,6 +1,6 @@
 # Official Algorithm Submission Example for the [Cosas Challenge](https://cosas.grand-challenge.org)
 
-This example demonstrates an official algorithm submission implemented using MMSegmentation for the Cosas Challenge. The Cosas Challenge comprises two tasks, each involving datasets from different domains. During the preliminary test phase, each task's dataset is sourced from 4 domains, placed in 4 folders. Each domain includes images of varying sizes, ranging from 1000 to 2000 pixels. In the final test phase, the datasets for each task are drawn from 6 domains, placed in 6 folders, ranging from 1500 to 2000 pixels.
+This example demonstrates an official algorithm submission implemented using MMSegmentation for the Cosas Challenge. The Cosas Challenge comprises two tasks, each involving datasets from different domains. During the preliminary test phase, each task's dataset is sourced from 4 domains. Each domain includes images of varying sizes, ranging from 1000 to 2000 pixels. In the final test phase, the datasets for each task are drawn from 6 domains, ranging from 1500 to 2000 pixels.
 
 ## Prerequisites
 
