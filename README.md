@@ -30,9 +30,13 @@ Assuming your local test dataset is in /cosas/task2/input, the folder structure 
 └── info.json
 
 ```
-where info.json is the domain information of each image, example can be seen as following:
+The info.json file contains the domain information of each image, and an example can be seen below:
 ```json
-{"image1.png": "domain1", "img2.png": "domain1", "imgn.png": "domainm"}
+{
+  "image1.png": "domain1",
+  "image2.png": "domain1",
+  "imagen.png": "domainm"
+}
 ```
 
 Run the following command to test the algorithm locally:
