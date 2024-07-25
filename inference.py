@@ -15,8 +15,8 @@ def main():
     config = 'config.py'
     checkpoint = 'checkpoint.pth'
     model = init_model(config, checkpoint, device='cuda:0')
+    
     with torch.no_grad():
-
         for filename in os.listdir(input_root):
             if filename.endswith('.png'):
                 output_path = f'{output_root}/{filename}'
