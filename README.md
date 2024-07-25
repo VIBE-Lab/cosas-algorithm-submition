@@ -23,41 +23,33 @@ docker build -t cosas .
 Assuming your local test dataset is in /cosas/task2/input, the folder structure should be as follows:
 ```
 /cosas/task2/input
-├── domain1
-│   └── image
-│       ├── image1.png
-│       ├── image2.png
-│       └── imagen.png
-├── domain2
-│   └── image
-│       ├── image1.png
-│       ├── image2.png
-│       └── imagen.png
+├── image1.png
+├── image2.png
+...
+├── imagen.png
+└── info.json
 
 ```
+where info.json is the domain information of each image, example can be seen as following:
+```json
+{"image1.png": "domain1", "img2.png": "domain1", "imgn.png": "domainm"}
+```
+
 Run the following command to test the algorithm locally:
 ```
-sudo docker run --gpus all --volume "/cosas/task2/input":/input --volume "/cosas/task2/output":/output cosas
+sudo docker run --gpus all --volume /cosas/task2/input:/input/images/adenocarcinoma-image --volume /cosas/task2/output:/output/images/adenocarcinoma-mask cosas
 ```
 
 In the output image, regions with pixel values of 0 represent negative areas, while other regions indicate tumor areas. The output filename of the image will be in grayscale, png format, and the same size as the input image. The output folder structure will be as follows:
 ```
-
 /cosas/task2/output
-├── domain1
-│   └── pred
-│       ├── image1.png
-│       ├── image2.png
-│       └── imagen.png
-├── domain2
-│   └── pred
-│       ├── image1.png
-│       ├── image2.png
-│       └── imagen.png
+├── image1.png
+├── image2.png
+...
+└── imagen.png
 ```
 
 ## Notes
-
 - Ensure Docker has permission to access the specified directories.
 - The path /cosas/task2/output should be an existing directory where the output will be saved. Create it if it does not exist.
 - Adjust the paths in the Docker command according to your local setup if they differ.
