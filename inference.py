@@ -10,7 +10,7 @@ def main():
     output_root = '/output/images/adenocarcinoma-mask'
 
     if not os.path.exists(output_root):
-        os.mkdir(output_root)
+        os.makedirs(output_root)
 
     config = 'config.py'
     checkpoint = 'checkpoint.pth'
