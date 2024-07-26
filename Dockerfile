@@ -18,6 +18,7 @@ RUN pip3 install mmcv==2.2.0 -f https://download.openmmlab.com/mmcv/dist/cu121/t
 RUN pip3 install mmsegmentation-1.2.2rc1-py3-none-any.whl
 RUN pip3 install ftfy
 RUN pip3 install regex
+RUN pip3 install SimpleITK
 
 RUN groupadd -r user && useradd -m --no-log-init -r -g user user
 USER user

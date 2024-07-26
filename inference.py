@@ -1,11 +1,32 @@
+import json
 import os
 
-import cv2
+import SimpleITK
 import torch
 
 from mmseg.apis import inference_model, init_model
 
+
+DOMAINS  = {'task1': 'body-part', 'task2': 'scanner'}
+
+def read(path):
+    image = SimpleITK.ReadImage(path)
+    return SimpleITK.GetArrayFromImage(image)
+
+
+def write(path, array):
+    image = SimpleITK.GetImageFromArray(array)
+    SimpleITK.WriteImage(image, path, useCompression=True)
+
+
 def main():
+    task = 'task1'
+    domain_path = f'/input/{DOMAINS[task]}.json'
+    if os.path.exists(domain_path):
+        domains = json.load(open(domain_path))
+    else:
+        domains = {}
+
     input_root = '/input/images/adenocarcinoma-image'
     output_root = '/output/images/adenocarcinoma-mask'
 
@@ -18,13 +39,14 @@ def main():
     
     with torch.no_grad():
         for filename in os.listdir(input_root):
-            if filename.endswith('.png'):
+            if filename.endswith('.mha'):
                 output_path = f'{output_root}/{filename}'
                 try:
                     input_path = input_root + '/' + filename
-                    result = inference_model(model, input_path).pred_sem_seg.cpu().data
-
-                    cv2.imwrite(output_path, result.squeeze().numpy().astype('uint8'))
+                    image = read(input_path)
+                    print(domains)
+                    result = inference_model(model, image).pred_sem_seg.cpu().data
+                    write(output_path, result.squeeze().numpy().astype('uint8'))
                 except Exception as error:
                     print(error)
 
