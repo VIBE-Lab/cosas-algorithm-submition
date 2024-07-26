@@ -23,19 +23,19 @@ docker build -t cosas .
 Assuming your local test dataset is in /cosas/task2/input, the folder structure should be as follows:
 ```
 /cosas/task2/input
-├── image1.png
-├── image2.png
+├── image1.mha
+├── image2.mha
 ...
-├── imagen.png
+├── imagen.mha
 └── info.json
 
 ```
 The info.json file contains the domain information of each image, and an example can be seen below:
 ```json
 {
-  "image1.png": "domain1",
-  "image2.png": "domain1",
-  "imagen.png": "domainm"
+  "image1.mha": "domain1",
+  "image2.mha": "domain1",
+  "imagen.mha": "domainm"
 }
 ```
 

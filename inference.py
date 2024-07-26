@@ -1,6 +1,8 @@
 import json
 import os
 
+import warnings
+
 import SimpleITK
 import torch
 
@@ -44,7 +46,7 @@ def main():
                 try:
                     input_path = input_root + '/' + filename
                     image = read(input_path)
-                    print(domains)
+                    warnings.warn(str(domains))
                     result = inference_model(model, image).pred_sem_seg.cpu().data
                     write(output_path, result.squeeze().numpy().astype('uint8'))
                 except Exception as error:
