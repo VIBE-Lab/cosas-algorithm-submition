@@ -9,7 +9,8 @@ import torch
 from mmseg.apis import inference_model, init_model
 
 
-DOMAINS  = {'task1': 'body-part', 'task2': 'scanner'}
+DOMAINS = {'task1': 'body-part', 'task2': 'scanner'}
+
 
 def read(path):
     image = SimpleITK.ReadImage(path)
@@ -18,16 +19,16 @@ def read(path):
 
 def write(path, array):
     image = SimpleITK.GetImageFromArray(array)
-    SimpleITK.WriteImage(image, path, useCompression=True)
+    SimpleITK.WriteImage(image, path, useCompression=False)
 
 
 def main():
     task = 'task1'
     domain_path = f'/input/{DOMAINS[task]}.json'
     if os.path.exists(domain_path):
-        domains = json.load(open(domain_path))
+        domains = open(domain_path).read().strip()
     else:
-        domains = {}
+        domains = 'unkown'
 
     input_root = '/input/images/adenocarcinoma-image'
     output_root = '/output/images/adenocarcinoma-mask'
