@@ -23,7 +23,7 @@ def write(path, array):
 
 
 def main():
-    task = 'task1'
+    task = 'task2'
     domain_path = f'/input/{DOMAINS[task]}.json'
     if os.path.exists(domain_path):
         domains = open(domain_path).read().strip()

@@ -20,28 +20,24 @@ docker build -t cosas .
 ```
 
 ## Local Test
-Assuming your local test dataset is in /cosas/task2/input, the folder structure should be as follows:
+Assuming your local test dataset for task2 is in /cosas/task2/input/domain1, the folder structure should be as follows:
 ```
-/cosas/task2/input
-├── image1.mha
-├── image2.mha
-...
-├── imagen.mha
-└── info.json
-
+/cosas/task2/input/domain1
+├──scanner.json
+└──images/adenocarcinoma-image
+    ├── image1.mha
+    ├── image2.mha
+    ...
+    └── imagen.mha
 ```
-The info.json file contains the domain information of each image, and an example can be seen below:
-```json
-{
-  "image1.mha": "domain1",
-  "image2.mha": "domain1",
-  "imagen.mha": "domainm"
-}
+The info.json file contains the domain information of all image, and an example can be seen below:
+```
+domain1
 ```
 
 Run the following command to test the algorithm locally:
 ```
-sudo docker run --gpus all --volume /cosas/task2/input:/input/images/adenocarcinoma-image --volume /cosas/task2/output:/output/images/adenocarcinoma-mask cosas
+sudo docker run --gpus all --volume /cosas/task2/input/domain1:/input --volume /cosas/task2/output:/output cosas
 ```
 
 In the output image, regions with pixel values of 0 represent negative areas, while other regions indicate tumor areas. The output filename of the image will be in grayscale, png format, and the same size as the input image. The output folder structure will be as follows:
