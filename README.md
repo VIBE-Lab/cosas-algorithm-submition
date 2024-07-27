@@ -35,7 +35,7 @@ Run the following command to test the algorithm locally:
 sudo docker run --gpus all --volume /cosas/task2/input/domain1:/input --volume /cosas/task2/output:/output cosas
 ```
 
-In the output image, regions with pixel values of 0 represent negative areas, while other regions indicate tumor areas. The output filename of the image will be in grayscale, png format, and the same size as the input image. The output folder structure will be as follows:
+In the output image, regions with pixel values of 0 represent negative areas, while other regions indicate tumor areas. The output filename of the image will be in grayscale, .mha format, and the same size as the input image. The output folder structure will be as follows:
 ```
 /cosas/task2/output
 └──images/adenocarcinoma-mask
