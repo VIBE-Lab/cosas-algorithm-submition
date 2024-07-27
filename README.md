@@ -23,16 +23,11 @@ docker build -t cosas .
 Assuming your local test dataset for task2 is in /cosas/task2/input/domain1, the folder structure should be as follows:
 ```
 /cosas/task2/input/domain1
-├──scanner.json
 └──images/adenocarcinoma-image
     ├── image1.mha
     ├── image2.mha
     ...
     └── imagen.mha
-```
-The info.json file contains the domain information of all image, and an example can be seen below:
-```
-domain1
 ```
 
 Run the following command to test the algorithm locally:
@@ -43,17 +38,18 @@ sudo docker run --gpus all --volume /cosas/task2/input/domain1:/input --volume /
 In the output image, regions with pixel values of 0 represent negative areas, while other regions indicate tumor areas. The output filename of the image will be in grayscale, png format, and the same size as the input image. The output folder structure will be as follows:
 ```
 /cosas/task2/output
-├── image1.png
-├── image2.png
-...
-└── imagen.png
+└──images/adenocarcinoma-mask
+    ├── image1.mha
+    ├── image2.mha
+    ...
+    └── imagen.mha
 ```
 
 ## Notes
 - Ensure Docker has permission to access the specified directories.
 - The path /cosas/task2/output should be an existing directory where the output will be saved. Create it if it does not exist.
 - Adjust the paths in the Docker command according to your local setup if they differ.
-Verify that all images in the input folder are in the png format
+Verify that all images in the input folder are in the .mha format
 
 If you have any questions, please feel free to contact the challenge organizer via email:
 
